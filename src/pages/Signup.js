@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { signup } from '../firebase/auth';
 
-function Signup() {
+function Signup(prop) {
   const { register, handleSubmit, reset } = useForm();
   const [isLoading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    let newUSer;
     setLoading(true);
     try {
-      await signup(data);
+      newUser = await signup(data);
       reset();
     } catch(error) {
       console.log(error);
+    }
+
+    if (newUSer){
+      PaymentResponse.history.push ()
     }
     setLoading(false);
   }
